@@ -58,19 +58,53 @@
       </nav>
       <div class="container text-center">
         <div class=formulario>
-      <div class="mb-3">
-        <div class="col-md-6 offset-md-3">
-            <label for="exampleFormControlInput1" class="form-label">Ingrese su email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+          <form>
+              <div class="mb-3">
+                <div class="col-md-6 offset-md-3">
+                  <label for="exampleFormControlInput1" class="form-label">Ingrese su email</label>
+                  <input type="email" class="form-control" id="emailIngresado" placeholder="nombre@ejemplo.com" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="col-md-6 offset-md-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Cuentenos que libro le gustaría que consigamos</label>
+                  <input class="form-control" id="textoIngresado" rows="5" required></input>
+                </div>
+              </div>
+                <div class="mb-3">
+                  <div class="col-md-2 offset-md-5">
+                    <button onclick="Corroboracion(event)" class="form-control">Regístrate</button>
+                  </div>
+                </div>
+          </form>
         </div>
-    </div>
-      <div class="mb-3">
-        <div class="col-md-6 offset-md-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Cuentenos que libro le gustaría que consigamos</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-        </div>
-      </div>
-    </div>
     </div>
 </body>
+<script>
+  function Corroboracion(e){
+    e.preventDefault();
+    var mailingresado = document.getElementById("emailIngresado");
+    var texto = document.getElementById("textoIngresado");
+    if(texto.value==""){
+      texto.classList.add("is-invalid");
+    }
+    var temporal;
+    var completo =0;
+    for(var i=0;i<mailingresado.length;i++){
+      if(mailingresado.value[i]=='@'){
+        temporal=i;
+      }
+      if(temporal<i){
+        if(mailingresado.value[i]=='.' && mailingresado.value[i+1]=='c' && mailingresado.value[i+2]=='o' && mailingresado.value[i+3]=='m'){
+          completo=1;
+        }
+      }  
+    }
+    if(completo==1){
+      console.log("email");
+    } else{
+      mailingresado.classList.add("is-invalid");
+    }
+  }
+</script>
 </html>
