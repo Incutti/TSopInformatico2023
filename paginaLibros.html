@@ -84,40 +84,42 @@
 <script>
   function Corroboracion(e){
     
-    var mailingresado = document.getElementById("emailIngresado"); //var mailingresado = $("emailIngresado") 
-    var texto = document.getElementById("textoIngresado"); //var texto = $("textoIngresado")
-    if(texto.value==""){
-      texto.classList.add("is-invalid");
-      // texto.addClass("is-invalid");
+    //var mailingresado = document.getElementById("emailIngresado");
+    var mailingresado = $("#emailIngresado");
+    //var texto = document.getElementById("textoIngresado"); 
+    var texto = $("#textoIngresado");
+    if(texto.val()==""){
+      // texto.classList.add("is-invalid");
+      texto.addClass("is-invalid");
     }else{
-      texto.classList.remove("is-invalid");
-      // texto.removeClass("is-invalid");  
-      texto.classList.add("is-valid");
-      // texto.addClass("is-valid");
+      //texto.classList.remove("is-invalid");
+      texto.removeClass("is-invalid");  
+      //texto.classList.add("is-valid");
+      texto.addClass("is-valid");
     }
     var temporal;
     var completo =0;
     
-    for(var i=0;i<mailingresado.value.length;i++){
-      console.log(mailingresado.value[i]);
-      if(mailingresado.value[i]=='@'){
+    for(var i=0;i<mailingresado.val().length;i++){
+      console.log(mailingresado.val()[i]);
+      if(mailingresado.val()[i]=='@'){
         temporal=i;
         
       }
       if(temporal<i){
-        if(mailingresado.value[i]=='.' && mailingresado.value[i+1]=='c' && mailingresado.value[i+2]=='o' && mailingresado.value[i+3]=='m'){
+        if(mailingresado.val()[i]=='.' && mailingresado.val()[i+1]=='c' && mailingresado.val()[i+2]=='o' && mailingresado.val()[i+3]=='m'){
           completo=1;
         }
       }  
     }
     if(completo==1){
       console.log("email");
-      mailingresado.classList.remove("is-invalid");
-      mailingresado.classList.add("is-valid");
+      mailingresado.removeClass("is-invalid");
+      mailingresado.addClass("is-valid");
     } else{
-      mailingresado.classList.add("is-invalid");
+      mailingresado.addClass("is-invalid");
     }
-    // e.preventDefault();
+    e.preventDefault();
   }
 </script>
 </html>
