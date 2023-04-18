@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+    
+    <div class="col-md-6 offset-md-4">
+        <img class="imagenes" id="imagen1" src="https://static.vecteezy.com/system/resources/previews/007/165/676/non_2x/cute-square-halloween-skull-and-cross-bones-doodle-flat-design-cartoon-for-shirt-poster-gift-card-cover-or-logo-free-vector.jpg" alt="">
+        <img class="imagenes" id="imagen2" src="https://previews.123rf.com/images/elenarolau/elenarolau1611/elenarolau161100052/67679926-invierno-fondo-de-la-acuarela-cuadrada-con-el-chapoteo-de-la-nieve-que-cae-la-textura-%C3%A1spera-de.jpg">
+        <img class="imagenes" id="imagen3" src="https://img.freepik.com/vector-premium/marco-cuadrado-rosa-claro-cuadrado-rosa-claro-bandera-cuadrada-luz-rosa_1189-2997.jpg">
+        <img class="imagenes" id="imagen4" src="https://img.freepik.com/vector-premium/linea-cuadrada-brillante_1189-1600.jpg">
+        <button onclick="chau()"><</button>
+        <button onclick="hola()">></button>
+    </div>
+
+</body>
+</html>
+
+<style>
+    .imagenes{
+        height: 500px;  
+        display: none;
+    }
+    #imagen1{
+        display:block;
+    }
+</style>
+
+<script>
+    /* var intervalo= setInterval(funcion, 3000)
+    function funcion(){
+        if(document.ge)
+    }
+    */
+    var idTemporal=1;
+    var intervalo = setInterval (hola, 1000); 
+    function hola(){
+        
+        document.getElementById("imagen"+idTemporal).style = "display: none";    
+        if(document.getElementsByTagName("img").length==idTemporal){
+            idTemporal=1;
+        } else{
+            idTemporal++;
+        }
+        document.getElementById("imagen"+idTemporal).style = "display: block";
+        
+    }
+    function chau(){
+        
+    }
+</script>
