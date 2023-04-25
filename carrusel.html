@@ -43,19 +43,28 @@
     }
     */
     var idTemporal=1;
-    var intervalo = setInterval (hola, 1000); 
+    var intervalo = setInterval (hola, 2000); 
     function hola(){
-        
         document.getElementById("imagen"+idTemporal).style = "display: none";    
         if(document.getElementsByTagName("img").length==idTemporal){
             idTemporal=1;
         } else{
             idTemporal++;
         }
-        document.getElementById("imagen"+idTemporal).style = "display: block";
-        
+        document.getElementById("imagen"+idTemporal).style = "display: block"; 
+        clearInterval(intervalo);
+        intervalo = setInterval (hola, 2000);
     }
+    
     function chau(){
-        
+        document.getElementById("imagen"+idTemporal).style = "display: none";    
+        if(1==idTemporal){
+            idTemporal=document.getElementsByTagName("img").length;
+        } else{
+            idTemporal--;
+        }
+        document.getElementById("imagen"+idTemporal).style = "display: block"; 
+        clearInterval(intervalo);
+        intervalo = setInterval (hola, 2000);
     }
 </script>
