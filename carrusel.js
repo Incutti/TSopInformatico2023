@@ -1,18 +1,26 @@
-var idTemporal=1;
+var idTemporal=0;
 var numeroDeImagenes;
+var variableCarrusel;
 function activarMiCarrusel(carrusel, segundos){
-    numeroDeImagenes=document.getElementById(carrusel).children("img").length;
+    variableCarrusel=carrusel
+    console.log("hola q tal")
+    numeroDeImagenes=$("#"+carrusel).children("img").length;
+    // numeroDeImagenes=document.getElementById(carrusel).children("img").length;
     var intervalo = setInterval (hola, segundos); 
-    
+    $("#"+variableCarrusel).children("img")[0].style = "display: block";
+
 }
 
 
+
 function hola(){
-    document.getElementById("imagen"+idTemporal).style = "display: none";    
-    if(numeroDeImagenes==idTemporal){
-        idTemporal=1;
+    
+    console.log($("#"+variableCarrusel).children("img")[0])
+    $("#"+variableCarrusel).children("img")[idTemporal].style = "display: none";    
+    if(numeroDeImagenes-1==idTemporal){
+        idTemporal=0;
     } else{
         idTemporal++;
     }
-    document.getElementById("imagen"+idTemporal).style = "display: block"; 
+    $("#"+variableCarrusel).children("img")[idTemporal].style = "display: block"; 
 }
