@@ -121,5 +121,11 @@
     }
     e.preventDefault();
   }
+
+  $.ajax({
+    method: "post",
+    url:"/insertar",
+    data: datos
+  })
 </script>
 </html>
