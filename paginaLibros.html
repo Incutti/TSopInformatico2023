@@ -59,22 +59,22 @@
       </nav>
       <div class="container text-center">
         <div class=formulario>
-          <form>
+          <form id="Formulario">
               <div class="mb-3">
                 <div class="col-md-6 offset-md-3">
                   <label for="exampleFormControlInput1" class="form-label">Ingrese su email</label>
-                  <input type="email" class="form-control" id="emailIngresado" placeholder="nombre@ejemplo.com" required>
+                  <input type="email" name="email" class="form-control" id="emailIngresado" placeholder="nombre@ejemplo.com" required>
                 </div>
               </div>
               <div class="mb-3">
                 <div class="col-md-6 offset-md-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Cuentenos que libro le gustaría que consigamos</label>
-                  <input class="form-control" id="textoIngresado" rows="5" required></input>
+                  <input class="form-control" name="mensaje" id="textoIngresado" rows="5" required></input>
                 </div>
               </div>
                 <div class="mb-3">
                   <div class="col-md-2 offset-md-5">
-                    <button onclick="Corroboracion(event)" class="form-control">Regístrate</button>
+                    <button onclick="Corroboracion(event)" type="submit" class="form-control">Regístrate</button>
                   </div>
                 </div>
           </form>
@@ -82,20 +82,18 @@
     </div>
 </body>
 <script>
+  var textoLleno=0;
   function Corroboracion(e){
-    
-    //var mailingresado = document.getElementById("emailIngresado");
+
     var mailingresado = $("#emailIngresado");
-    //var texto = document.getElementById("textoIngresado"); 
     var texto = $("#textoIngresado");
     if(texto.val()==""){
-      // texto.classList.add("is-invalid");
       texto.addClass("is-invalid");
+      textoLleno=0;
     }else{
-      //texto.classList.remove("is-invalid");
       texto.removeClass("is-invalid");  
-      //texto.classList.add("is-valid");
       texto.addClass("is-valid");
+      textoLleno=1;
     }
     var temporal;
     var completo =0;
@@ -112,20 +110,22 @@
         }
       }  
     }
-    if(completo==1){
+    if(completo==1 && textoLleno==1){
       console.log("email");
       mailingresado.removeClass("is-invalid");
       mailingresado.addClass("is-valid");
+      $.ajax({
+        method: "post",
+        url:"http://localhost:3000/insertar",
+        data: $("#Formulario").serialize()
+      })
     } else{
       mailingresado.addClass("is-invalid");
     }
     e.preventDefault();
+    
   }
 
-  $.ajax({
-    method: "post",
-    url:"/insertar",
-    data: datos
-  })
+
 </script>
 </html>
