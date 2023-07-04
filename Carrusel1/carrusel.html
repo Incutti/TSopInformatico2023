@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="carrusel.js"></script>
+
+</head>
+
+
+<body>
+    
+    <div id="carrusel">
+        <img class="imagenes" id="imagen1" src="images/calavera.jpg" alt="">
+        <img class="imagenes" id="imagen2" src="images/cuadrado.png">
+        <img class="imagenes" id="imagen3" src="images/cuadrado1.png">
+        <img class="imagenes" id="imagen4" src="images/cuadrado2.png">
+        <img class="imagenes" id="imagen5" src="images/plantas.jpg">
+        <img class="imagenes" id="imagen6" src="images/mensajeFeliz.png">
+
+        <button onclick="chau()"><</button>
+        <button onclick="hola()">></button>
+    </div>
+    
+</body>
+
+</html>
+
+<style>
+    .imagenes{
+        height: 500px;  
+        display: none;
+    }
+    #imagen1{
+        display:block;
+    }
+</style>
+
+<script>
+
+
+    var idTemporal=1;
+    var intervalo = setInterval (hola, 2000); 
+    function hola(){
+        document.getElementById("imagen"+idTemporal).style = "display: none";    
+        if(document.getElementsByTagName("img").length==idTemporal){
+            idTemporal=1;
+        } else{
+            idTemporal++;
+        }
+        document.getElementById("imagen"+idTemporal).style = "display: block"; 
+        clearInterval(intervalo);
+        intervalo = setInterval (hola, 2000);
+    }
+    
+    function chau(){
+        document.getElementById("imagen"+idTemporal).style = "display: none";    
+        if(1==idTemporal){
+            idTemporal=document.getElementsByTagName("img").length;
+        } else{
+            idTemporal--;
+        }
+        document.getElementById("imagen"+idTemporal).style = "display: block"; 
+        clearInterval(intervalo);
+        intervalo = setInterval (hola, 2000);
+    }
+    
+</script>
